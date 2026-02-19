@@ -134,18 +134,20 @@ for (const update of data.result) {
   }
 }
 
-async function main() {
-  console.log("🤖 Bot is running...");
-  
+console.log("🤖 Bot is running...");
+
+async function runForever() {
   while (true) {
     try {
       await pollTelegram();
     } catch (err) {
-      console.error("Polling error:", err.message);
+      console.error("Polling error:", err);
     }
 
     await new Promise(resolve => setTimeout(resolve, 3000));
   }
 }
 
-main();
+runForever().catch(err => {
+  console.error("Fatal error:", err);
+});
