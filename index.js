@@ -134,9 +134,18 @@ for (const update of data.result) {
   }
 }
 
-setInterval(() => {
-  pollTelegram();
-}, 3000);
+async function main() {
+  console.log("🤖 Bot is running...");
+  
+  while (true) {
+    try {
+      await pollTelegram();
+    } catch (err) {
+      console.error("Polling error:", err.message);
+    }
 
-console.log("🤖 Bot is running...");
-                                         
+    await new Promise(resolve => setTimeout(resolve, 3000));
+  }
+}
+
+main();
