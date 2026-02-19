@@ -134,5 +134,9 @@ for (const update of data.result) {
   }
 }
 
-pollTelegram();
+setInterval(() => {
+  pollTelegram();
+}, 3000);
+
+console.log("🤖 Bot is running...");
                                          
