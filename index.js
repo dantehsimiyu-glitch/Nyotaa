@@ -96,8 +96,9 @@ async function pollTelegram() {
     const res = await fetch(`${TELEGRAM_API}/getUpdates?timeout=100&offset=${offset}`);
     const data = await res.json();
 
-    for (const update of data.result) {
-      offset = update.update_id + 1;
+    if (!data.result || !Array.isArray(data.result)) return;
+
+for (const update of data.result) {
 
       if (!update.message) continue;
 
