@@ -136,7 +136,7 @@ for (const update of data.result) {
 
 console.log("🤖 Bot is running...");
 
-async function runForever() {
+async function startBot() {
   while (true) {
     try {
       await pollTelegram();
@@ -144,10 +144,17 @@ async function runForever() {
       console.error("Polling error:", err);
     }
 
-    await new Promise(resolve => setTimeout(resolve, 3000));
+    await new Promise(resolve => setTimeout(resolve, 2000));
   }
 }
 
-runForever().catch(err => {
-  console.error("Fatal error:", err);
+// Prevent crash shutdown
+process.on("unhandledRejection", err => {
+  console.error("Unhandled rejection:", err);
 });
+
+process.on("uncaughtException", err => {
+  console.error("Uncaught exception:", err);
+});
+
+startBot();
