@@ -2,6 +2,20 @@ import fetch from "node-fetch";
 import WebSocket from "ws";
 import http from "http";
 
+if (!process.env.TELEGRAM_TOKEN) {
+  console.error("❌ TELEGRAM_TOKEN is missing!");
+  process.exit(1);
+}
+
+if (!process.env.DERIV_TOKEN) {
+  console.error("❌ DERIV_TOKEN is missing!");
+  process.exit(1);
+}
+
+/* ================================
+   ENV VARIABLES
+================================ */
+
 /* ================================
    ENV VARIABLES
 ================================ */
