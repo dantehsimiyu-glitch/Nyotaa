@@ -1,7 +1,5 @@
-import fetch from "node-fetch";
-import WebSocket from "ws";
-import http from "http";
-
+console.log("Telegram token:", process.env.TELEGRAM_TOKEN);
+console.log("Deriv token:", process.env.DERIV_TOKEN);
 /* =========================
    ENV VARIABLES
 ========================= */
